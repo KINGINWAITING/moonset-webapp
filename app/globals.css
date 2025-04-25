@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224, 71%, 4%;
+    --foreground: 213, 31%, 91%;
+    --card: 224, 71%, 4%;
+    --card-foreground: 213, 31%, 91%;
+    --popover: 224, 71%, 4%;
+    --popover-foreground: 215, 20.2%, 65.1%;
+    --primary: 210, 40%, 98%;
+    --primary-foreground: 222.2, 47.4%, 1.2%;
+    --secondary: 222.2, 47.4%, 11.2%;
+    --secondary-foreground: 210, 40%, 98%;
+    --muted: 223, 47%, 11%;
+    --muted-foreground: 215, 16%, 56%;
+    --accent: 216, 34%, 17%;
+    --accent-foreground: 210, 40%, 98%;
+    --destructive: 0, 63%, 31%;
+    --destructive-foreground: 210, 40%, 98%;
+    --border: 216, 34%, 17%;
+    --input: 216, 34%, 17%;
+    --ring: 216, 34%, 17%;
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-ring: 240 5.9% 10%;
+  }
+
+  .dark {
+    --background: 260 40% 10%;
+    --foreground: 0 0% 98%;
+    --card: 260 40% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 260 40% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 260 73% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 190 75% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 260 59% 60%;
+
+    /* Sidebar */
+    --sidebar: 260 40% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #2a2151, #4942b4);
+    color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+    opacity: 0.4;
+  }
+  
+  body::before {
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, #9061FF, #4942b4);
+    top: -10vw;
+    right: -10vw;
+  }
+  
+  body::after {
+    width: 35vw;
+    height: 35vw;
+    background: radial-gradient(circle, #476FFF, #2E3192);
+    bottom: -10vw;
+    left: -10vw;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-500;
+  }
+}
+
+@layer utilities {
+  .gradient-border {
+    @apply border border-transparent bg-origin-border;
+    background-image: linear-gradient(to right, rgba(156, 39, 176, 0.5), rgba(63, 81, 181, 0.5));
+    background-clip: border-box;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    z-index: -1;
+    margin: 1px;
+    border-radius: inherit;
+  }
+  
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+  
+  .nav-item {
+    @apply px-4 py-2 text-sm font-medium transition-colors;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+}
+
+/* Custom scrollbar for the entire app */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 39, 176, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 39, 176, 0.5);
+}
