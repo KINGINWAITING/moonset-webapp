@@ -12,7 +12,7 @@ import { AlertCircle, Clock, Coins, HelpCircle, Info, Lock, Unlock, CalendarDays
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useState } from "react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function StakingPage() {
   // Get current date in a nice format

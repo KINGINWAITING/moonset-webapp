@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { useState } from "react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function MarketDataPage() {
   // Get current date in a nice format

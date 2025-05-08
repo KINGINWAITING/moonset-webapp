@@ -4,7 +4,7 @@ import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Bell, CalendarDays, Settings, Check } from "lucide-react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function NotificationsPage() {
   // Get current date in a nice format

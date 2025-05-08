@@ -5,10 +5,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
 
 import { ThemeProvider } from "@/components/theme-provider"
-import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { Toaster } from "@/components/ui/toaster"
 import { WalletProvider } from "@/components/wallet-provider"
+import { ConditionalHeader } from "@/components/conditional-header"
+import { CryptoTicker } from "@/components/CryptoTicker"
 
 import "@/app/globals.css"
 
@@ -59,10 +60,12 @@ export default function RootLayout({
               <div className="fixed inset-0 -z-10 bg-[radial-gradient(at_top_right,_var(--tw-gradient-stops))] from-purple-800/20 via-transparent to-transparent blur-3xl"></div>
               <div className="fixed inset-0 -z-10 bg-[radial-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-800/20 via-transparent to-transparent blur-3xl"></div>
               
-              <SiteHeader />
-              <Suspense>
-                <div className="flex-1">{children}</div>
-              </Suspense>
+              <CryptoTicker />
+              <ConditionalHeader>
+                <Suspense>
+                  <div className="flex-1">{children}</div>
+                </Suspense>
+              </ConditionalHeader>
             </div>
             <TailwindIndicator />
           </WalletProvider>

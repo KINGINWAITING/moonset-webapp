@@ -24,8 +24,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { useState } from "react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
-import DashboardTabs from '../../../components/dashboard-tabs'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
+import DashboardTabs from '@/components/dashboard-tabs'
+import { MoonsetTokenChart } from '@/components/moonset-token-chart'
 
 export default function TokenAnalyticsPage() {
   // Get current date in a nice format
@@ -79,17 +80,14 @@ export default function TokenAnalyticsPage() {
           </CardHeader>
           
           <CardContent>
-            <div className="mb-4">
-              <div className="text-white font-semibold">MOONSET/USD <span className="text-sm font-normal text-white/70">$0.0842</span></div>
-              <div className="text-white/60 text-xs">Last 6 months</div>
-            </div>
-            
-            <div className="flex justify-center items-center py-20">
-              <div className="text-white/40 text-center">
-                <div className="text-9xl opacity-10 mb-4">📊</div>
-                <div className="text-lg">Chart visualization would appear here</div>
-              </div>
-            </div>
+            <MoonsetTokenChart 
+              height={350}
+              showVolume={true}
+              showMarketCap={true}
+              lastUpdated="2 min ago"
+              priceChange={{ value: 4.28, period: "last week" }}
+              currentPrice={0.0842}
+            />
             
             <div className="grid grid-cols-4 gap-2 mt-6 text-center">
               <div className="bg-white/5 rounded-md p-2">
@@ -125,10 +123,27 @@ export default function TokenAnalyticsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="flex justify-center items-center py-20">
-              <div className="text-white/40 text-center">
-                <div className="text-9xl opacity-10 mb-4">📈</div>
-                <div className="text-lg">Volume chart visualization would appear here</div>
+            <MoonsetTokenChart 
+              height={400}
+              showVolume={true}
+              showMarketCap={false}
+              lastUpdated="2 min ago"
+              priceChange={{ value: 4.28, period: "last week" }}
+              currentPrice={0.0842}
+            />
+            
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="bg-white/5 rounded-md p-4">
+                <h4 className="text-white font-medium mb-2">Volume Analysis</h4>
+                <p className="text-white/70 text-sm">
+                  Trading volume has increased by 28% over the past month, indicating growing interest in the MOONSET token.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-md p-4">
+                <h4 className="text-white font-medium mb-2">Volume/Market Cap Ratio</h4>
+                <p className="text-white/70 text-sm">
+                  Current ratio: 0.36 - A healthy indicator showing reasonable trading activity relative to the token's market capitalization.
+                </p>
               </div>
             </div>
           </CardContent>

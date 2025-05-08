@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { CalendarDays, ArrowUpRight, TrendingUp, BarChart2, Users, Vote, Lock, ArrowRight, ChevronRight, FileText, Bell } from 'lucide-react'
-import DashboardPageLayout from '../../components/dashboard-page-layout'
-import DashboardTabs from '../../components/dashboard-tabs'
+import { CalendarDays, ArrowUpRight, TrendingUp, BarChart2, Users, Vote, Lock, ArrowRight, ChevronRight, FileText, Bell, Clock } from 'lucide-react'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
+import DashboardTabs from '@/components/dashboard-tabs'
+import { MoonsetTokenChart } from '@/components/moonset-token-chart'
 
 export default function DashboardPage() {
   // Format current date
@@ -24,32 +25,9 @@ export default function DashboardPage() {
       label: "Overview",
       content: (
         <div className="dashboard-grid-2">
-          {/* Token chart */}
-          <Link href="/dashboard/analytics" className="cursor-pointer col-span-1 row-span-2">
-            <Card className="dashboard-card hover-lift h-full">
-              <div className="dashboard-card-header">
-                <h3 className="dashboard-card-title">MOONSET Token Price</h3>
-              </div>
-              <div className="p-5">
-                <div className="aspect-[4/3] bg-black/20 rounded-md mb-4 flex items-center justify-center">
-                  <p className="text-muted-foreground text-sm">Token price chart visualization</p>
-                </div>
-                <div className="flex justify-between text-sm text-muted-foreground">
-                  <span>Jan</span>
-                  <span>Feb</span>
-                  <span>Mar</span>
-                  <span>Apr</span>
-                  <span>May</span>
-                  <span>Jun</span>
-                  <span>Jul</span>
-                </div>
-              </div>
-            </Card>
-          </Link>
-
           {/* Token stats */}
           <Link href="/dashboard/analytics" className="cursor-pointer">
-            <Card className="dashboard-card hover-lift">
+            <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
               <div className="dashboard-card-header">
                 <h3 className="dashboard-card-title">Token Statistics</h3>
                 <span className="text-xs text-muted-foreground">Key metrics</span>
@@ -74,10 +52,10 @@ export default function DashboardPage() {
           </Link>
           
           {/* Activity summary */}
-          <Card className="dashboard-card hover-lift">
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
             <div className="dashboard-card-header">
               <h3 className="dashboard-card-title">Recent Activity</h3>
-              <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-400/10">
+              <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-400/10 badge-glow">
                 New
               </Badge>
             </div>
@@ -128,6 +106,56 @@ export default function DashboardPage() {
                       </Button>
                     </Link>
                   </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Market overview */}
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
+            <div className="dashboard-card-header">
+              <h3 className="dashboard-card-title">Market Overview</h3>
+              <span className="text-xs text-muted-foreground">Global metrics</span>
+            </div>
+            <div className="p-5">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span className="text-sm text-muted-foreground">Market Cap</span>
+                  <span className="font-medium">$8.42M</span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span className="text-sm text-muted-foreground">24h Trading Volume</span>
+                  <span className="font-medium">$1.24M</span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span className="text-sm text-muted-foreground">All Time High</span>
+                  <span className="font-medium">$0.1284</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Community info */}
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
+            <div className="dashboard-card-header">
+              <h3 className="dashboard-card-title">Community</h3>
+              <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-400/10">
+                Growing
+              </Badge>
+            </div>
+            <div className="p-5">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span className="text-sm text-muted-foreground">Total Holders</span>
+                  <span className="font-medium">12,482</span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span className="text-sm text-muted-foreground">Active Members</span>
+                  <span className="font-medium">2,842</span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span className="text-sm text-muted-foreground">New Members (24h)</span>
+                  <span className="font-medium text-green-400">+124</span>
                 </div>
               </div>
             </div>
@@ -214,7 +242,7 @@ export default function DashboardPage() {
   return (
     <DashboardPageLayout>
       {/* Header with date */}
-      <div className="dashboard-header-with-date">
+      <div className="dashboard-header-with-date fadeInUp">
         <div className="dashboard-header-left-content">
           <h1 className="dashboard-title">Dashboard Overview</h1>
           <p className="dashboard-description">
@@ -222,15 +250,35 @@ export default function DashboardPage() {
           </p>
         </div>
         <div className="dashboard-date">
-          <CalendarDays size={16} />
+          <CalendarDays className="w-4 h-4" />
           <span>{currentDate}</span>
         </div>
       </div>
 
+      {/* Token price chart at the top */}
+      <Card className="dashboard-card hover-lift mb-6 bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
+        <div className="dashboard-card-header">
+          <h3 className="dashboard-card-title">MOONSET Token Price</h3>
+          <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-400/10">
+            +4.28%
+          </Badge>
+        </div>
+        <div className="p-5">
+          <MoonsetTokenChart 
+            height={300}
+            showVolume={true}
+            showMarketCap={true}
+            lastUpdated="2 min ago"
+            priceChange={{ value: 4.28, period: "last week" }}
+            currentPrice={0.0842}
+          />
+        </div>
+      </Card>
+
       {/* Key stats */}
       <div className="dashboard-grid-4 mb-6">
         <Link href="/dashboard/market" className="cursor-pointer">
-          <Card className="dashboard-card hover-lift">
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
             <div className="stats-card">
               <div className="stats-card-header">
                 <p className="stats-card-title">MOONSET PRICE</p>
@@ -250,7 +298,7 @@ export default function DashboardPage() {
         </Link>
         
         <Link href="/dashboard/market" className="cursor-pointer">
-          <Card className="dashboard-card hover-lift">
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
             <div className="stats-card">
               <div className="stats-card-header">
                 <p className="stats-card-title">MARKET CAP</p>
@@ -270,7 +318,7 @@ export default function DashboardPage() {
         </Link>
         
         <Link href="/dashboard/staking" className="cursor-pointer">
-          <Card className="dashboard-card hover-lift">
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
             <div className="stats-card">
               <div className="stats-card-header">
                 <p className="stats-card-title">TOTAL STAKED</p>
@@ -290,7 +338,7 @@ export default function DashboardPage() {
         </Link>
         
         <Link href="/dashboard/community" className="cursor-pointer">
-          <Card className="dashboard-card hover-lift">
+          <Card className="dashboard-card hover-lift bg-[rgba(40,20,65,0.15)] border-[rgba(140,43,255,0.15)]">
             <div className="stats-card">
               <div className="stats-card-header">
                 <p className="stats-card-title">ACTIVE USERS</p>
@@ -311,27 +359,27 @@ export default function DashboardPage() {
       </div>
 
       {/* Premium access section */}
-      <Card className="dashboard-card mb-6">
-        <div className="p-6">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20">
-              <span className="text-amber-400 text-lg">✦</span>
+      <Card className="dashboard-card mb-8 bg-gradient-to-br from-[#050110]/90 to-[#1e0c45]/80 border-[rgba(140,43,255,0.15)]">
+        <div className="p-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-purple-500/20 to-amber-500/20">
+              <span className="text-purple-400 text-lg">✦</span>
             </div>
             <h2 className="text-xl font-semibold">Premium Access</h2>
           </div>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground mb-8 max-w-2xl">
             Unlock advanced features and exclusive content with Premium Access
           </p>
 
-          <div className="dashboard-grid-3 mb-6">
+          <div className="dashboard-grid-3 mb-6 gap-6">
             <Link href="/dashboard/analytics" className="cursor-pointer">
-              <Card className="bg-black/20 border-black/10 hover-lift">
-                <div className="p-5 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center mb-4">
-                    <BarChart2 className="text-indigo-400 h-6 w-6" />
+              <Card className="bg-[rgba(40,20,65,0.25)] border-purple-500/15 hover-lift premium-card h-full">
+                <div className="p-6 flex flex-col items-center text-center h-full">
+                  <div className="w-14 h-14 rounded-full bg-indigo-500/10 flex items-center justify-center mb-4">
+                    <BarChart2 className="text-indigo-400 h-7 w-7" />
                   </div>
-                  <h3 className="text-base font-medium mb-2">Advanced Analytics</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <h3 className="text-base font-medium mb-3">Advanced Analytics</h3>
+                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
                     Access detailed market data and advanced charting tools
                   </p>
                 </div>
@@ -339,13 +387,13 @@ export default function DashboardPage() {
             </Link>
             
             <Link href="/dashboard/research" className="cursor-pointer">
-              <Card className="bg-black/20 border-black/10 hover-lift">
-                <div className="p-5 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mb-4">
-                    <Users className="text-blue-400 h-6 w-6" />
+              <Card className="bg-[rgba(40,20,65,0.25)] border-purple-500/15 hover-lift premium-card h-full">
+                <div className="p-6 flex flex-col items-center text-center h-full">
+                  <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-4">
+                    <Users className="text-blue-400 h-7 w-7" />
                   </div>
-                  <h3 className="text-base font-medium mb-2">AI Research Assistant</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <h3 className="text-base font-medium mb-3">AI Research Assistant</h3>
+                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
                     Get personalized research assistance powered by AI
                   </p>
                 </div>
@@ -353,13 +401,13 @@ export default function DashboardPage() {
             </Link>
             
             <Link href="/dashboard/research" className="cursor-pointer">
-              <Card className="bg-black/20 border-black/10 hover-lift">
-                <div className="p-5 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mb-4">
-                    <Lock className="text-purple-400 h-6 w-6" />
+              <Card className="bg-[rgba(40,20,65,0.25)] border-purple-500/15 hover-lift premium-card h-full">
+                <div className="p-6 flex flex-col items-center text-center h-full">
+                  <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center mb-4">
+                    <Lock className="text-purple-400 h-7 w-7" />
                   </div>
-                  <h3 className="text-base font-medium mb-2">Exclusive Content</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <h3 className="text-base font-medium mb-3">Exclusive Content</h3>
+                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
                     Access premium research papers and community resources
                   </p>
                 </div>
@@ -367,12 +415,12 @@ export default function DashboardPage() {
             </Link>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-8">
             <p className="text-sm text-muted-foreground">
               Stake MOONSET tokens to earn Premium Access NFTs
             </p>
             <Link href="/dashboard/staking">
-              <Button className="dashboard-button dashboard-button-primary">
+              <Button className="bg-gradient-to-r from-[#8c2bff] to-[#a05af5] hover:from-[#9061ff] hover:to-[#b066dc] text-white border-0 shadow-md hover:shadow-lg hover:shadow-purple-500/20 transition-all px-6 py-2.5">
                 Stake Now
               </Button>
             </Link>

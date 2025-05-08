@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import { Vote, Plus, ThumbsUp, ThumbsDown, Users, Clock, CalendarDays } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function GovernancePage() {
   // Get current date in a nice format

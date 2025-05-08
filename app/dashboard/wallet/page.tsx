@@ -9,7 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { ArrowDownLeft, ArrowUpRight, Copy, QrCode, RefreshCw, Send, Wallet, CalendarDays } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function WalletPage() {
   // Get current date in a nice format

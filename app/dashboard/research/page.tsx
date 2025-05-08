@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { BookOpen, Clock, Download, FileText, BarChart, Search, Star, Bookmark, Lock, CalendarDays, SlidersHorizontal, ArrowUpDown, TrendingUp, ExternalLink, FileCheck, ChartBar, Filter } from "lucide-react"
 import { ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function ResearchPage() {
   const router = useRouter();

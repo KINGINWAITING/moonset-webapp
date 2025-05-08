@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { MessageSquare, Users, UserPlus, Calendar, CalendarDays, Filter, PlusCircle, ArrowUpDown, Bell, ThumbsUp, MessageCircle, Award, UserCircle, Search, User, CalendarRange, UserRound, UserRoundPlus, Video, Flame } from "lucide-react"
-import DashboardPageLayout from '../../../components/dashboard-page-layout'
+import DashboardPageLayout from '@/components/dashboard-page-layout'
 
 export default function CommunityPage() {
   const [newPostVisible, setNewPostVisible] = useState(false);
